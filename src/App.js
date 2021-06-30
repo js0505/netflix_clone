@@ -1,6 +1,6 @@
 import React from 'react';
-import ScreenRouter from './Componants/ScreenRouter';
-import GlobalStyles from './Componants/GlobalStyles';
+import ScreenRouter from './Components/ScreenRouter';
+import GlobalStyles from './Components/GlobalStyles';
 
 const App = () => {
   return (
