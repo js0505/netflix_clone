@@ -1,5 +1,5 @@
-import React,{useEffect} from 'react';
-import {movieAPI} from '../API'
+import React from 'react';
+// import {movieAPI} from '../API'
 
 const Home = () => {
 

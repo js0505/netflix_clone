@@ -14,6 +14,7 @@ const Tv = () => {
         setOnTheAir(onTheAirRes);
         const [topRatedRes, topResError] = await tvAPI.topRated();
         setTopRated(topRatedRes);
+        console.log(airResError, onResError, topResError);
     }
 
     useEffect(() => {
