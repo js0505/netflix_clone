@@ -4,10 +4,14 @@ import {tvAPI} from '../API'
 const Tv = () => {
 
     const [airingToday, setAiringToday] = useState([]);
+    const [airingTodayError, setAiringTodayError] = useState({});
+
 
     const getData = async () => {
         const [res, resError] = await tvAPI.airingToday()
         setAiringToday(res)
+        setAiringTodayError(resError)
+
     }
 
     useEffect(() => {
