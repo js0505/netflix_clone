@@ -25,6 +25,18 @@ const getResponse = async (path, params = {}) => {
     }
 }
 
+// const getResponse = async (path, params = {}) => {
+//     await axios
+//         .get(`https://api.themoviedb.org/3${path}`, {params: {api_key : TMDB_KEY,...params}})
+//         .then(res => {
+//             const {data : { results }} = res;
+//             return [results, null]
+//         })
+//         .catch(err => console.log(err))
+// } 
+
+
+
 // getResponse 함수를 통해 공통된 주소 이후의 path 값을 인자로 보낸다.
 export const movieAPI = {
     nowPlaying : () => getResponse("/movie/now_playing"),
@@ -37,3 +49,9 @@ export const tvAPI = {
     onTheAir : () => getResponse("/tv/on_the_air"),
     topRated : () => getResponse("/tv/top_rated")
 }
+
+// export const searchAPI = {
+//     searchMovies : () => getResponse("/search/movie"),
+//     searchPeople : () => getResponse("/search/person"),
+//     searchTV : () => getResponse("/search/tv")
+// }

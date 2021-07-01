@@ -1,21 +1,55 @@
-import React from 'react';
-// import {movieAPI} from '../API'
+import React, {useState, useEffect} from 'react';
+import {movieAPI} from '../API'
 
 const Home = () => {
 
-    // const getData = async () => {
-    //     const [results, resultsErr] = await movieAPI.nowPlaying()
-    //     console.log("++++++++++++++++", results)
-    // }
+    const [nowPlaying , setNowPlaying] = useState([]);
+    const [topRated, setTopRated] = useState([]);
+    const [upComing, setUpComing] = useState([]);
 
-    // useEffect(() => {
-    //     getData()
-    // },[])
+    
+    const getData = async () => {
+        const [nowRes , nowResErr] = await movieAPI.nowPlaying();
+        setNowPlaying(nowRes);
+
+        const [topRes, topResErr] = await movieAPI.topRated();
+        setTopRated(topRes);
+        
+        const [upRes, upResErr] = await movieAPI.upComing();
+        setUpComing(upRes);
+
+        console.log(nowResErr, topResErr, upResErr);
+    }
+
+    useEffect(() => {
+        getData()
+    },[])
 
 
     return (
         <div>
-            <h1>Home</h1>
+            <div>
+                {nowPlaying.map(item => (
+                    <h1>{item.title}</h1>
+                ))}
+            </div>
+
+            <br />
+            <br />
+            
+            <div>
+                {topRated.map(item => (
+                    <h3>{item.title}</h3>
+                ))}
+            </div>
+            <br />
+            <br />
+            
+            <div>
+                {upComing.map(item => (
+                    <h3>{item.title}</h3>
+                ))}
+            </div>
         </div>
     );
 };
