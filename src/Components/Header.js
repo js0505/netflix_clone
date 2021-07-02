@@ -32,6 +32,8 @@ const Item = styled.li`
     transition: border-bottom 0.5s ease-in-out;
 `;
 
+
+//컴포넌트에 스타일링 할때는 괄호안에 넣어서.
 const SLink = styled(Link)`
     height: 50px;
     display: flex;

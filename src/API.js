@@ -15,10 +15,14 @@ const makeRequest = async (path, params) => {
 
 const getResponse = async (path, params = {}) => {
     try {
-        //makeRequest 함수의 response는 'data' 로 들어오고 그 값을 results 상수에 할당
+        // {data : { results }} = ES6의 새로운 문법.
+        // 여기선 axios로 들어온 데이터가 객체 형태로 들어오고
+        // 응답 스키마 안에 {data : { 응답 들어온 내용 }}이 들어 있으므로
+        // data.results 를 새로운 문법으로 작성하고
+        // key 값을 그대로 상수에 담은 뒤에 리턴.
         const {data : { results }} = await makeRequest(path, params)
         return [results, null]
-        //왜 배열로 리턴을 하는지 ?
+        //왜 배열로 리턴을 하는지 ? -> 데이터를 리턴받는 route 페이지에서 정상 응답, 에러를 배열로 받음.
     } catch(e) {
         console.log(e);
         return [null, e];

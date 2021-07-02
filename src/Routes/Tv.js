@@ -9,12 +9,11 @@ const Tv = () => {
 
     const getData = async () => {
         const [airRes, airResError] = await tvAPI.airingToday();
-        setAiringToday(airRes);
-
         const [onTheAirRes, onResError] = await tvAPI.onTheAir();
-        setOnTheAir(onTheAirRes);
-
         const [topRatedRes, topResError] = await tvAPI.topRated();
+        
+        setAiringToday(airRes);
+        setOnTheAir(onTheAirRes);
         setTopRated(topRatedRes);
 
         console.log(airResError, onResError, topResError);

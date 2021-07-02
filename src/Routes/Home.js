@@ -10,12 +10,11 @@ const Home = () => {
     
     const getData = async () => {
         const [nowRes , nowResErr] = await movieAPI.nowPlaying();
-        setNowPlaying(nowRes);
-
-        const [topRes, topResErr] = await movieAPI.topRated();
-        setTopRated(topRes);
-        
         const [upRes, upResErr] = await movieAPI.upComing();
+        const [topRes, topResErr] = await movieAPI.topRated();
+        
+        setNowPlaying(nowRes);
+        setTopRated(topRes);
         setUpComing(upRes);
 
         console.log(nowResErr, topResErr, upResErr);

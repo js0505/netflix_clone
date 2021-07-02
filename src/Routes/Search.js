@@ -32,10 +32,11 @@ const Search = () => {
 
 
     const [search, setSearch] = useState([]);
-    const [wow, setWow] = useState();
+
     const getData = async () => {
         const [searchTest, testErr] = await searchAPI.searchMovies();
         setSearch(searchTest);
+        console.log(testErr)
     }
 
     useEffect(() =>{
