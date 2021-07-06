@@ -4,10 +4,6 @@ import TVPresenter from './TVPresenter';
 
 const TvContainer = () => {
 
-    // const [airingToday, setAiringToday] = useState([]);
-    // const [onTheAir, setOnTheAir] = useState([]);
-    // const [topRated, setTopRated] = useState([]);
-
     const [tvs, setTvs] = useState({
         airingToday: [],
         onTheAir: [],
@@ -24,10 +20,6 @@ const TvContainer = () => {
         const [onTheAir, onTheAirErr] = await tvAPI.onTheAir();
         const [topRated, topRatedErr] = await tvAPI.topRated();
         
-        // setAiringToday(airingToday);
-        // setOnTheAir(onTheAir);
-        // setTopRated(topRated);
-
         setTvs({
             airingToday,
             onTheAir,
@@ -37,8 +29,6 @@ const TvContainer = () => {
             topRatedErr,
             loading: false
         })
-
-        // console.log(airingTodayErr, onTheAirErr, topRatedErr);
     }
 
     useEffect(() => {

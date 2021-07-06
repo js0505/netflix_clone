@@ -1,13 +1,3 @@
-// import React from 'react';
-
-// const TVPresenter = ({airingToday, onTheAir, topRated}) => {
-//     return (
-        
-//     );
-// };
-
-// export default TVPresenter;
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from '../../Components/Loader';
@@ -27,17 +17,10 @@ const TVPresenter = ({airingToday, onTheAir, topRated, loading}) => {
                     <Loader />
                 ) : (
                     <Container>
-                        {/* <div>
-                            {airingToday.map(item => (
-                                <div key={item.id}>
-                                    <h1>{item.name}</h1>
-                                </div>
-                            ))}
-                        </div> */}
                     
                         {airingToday && airingToday.length > 0 && (
                             <Section title={'Airing Today'}>
-                                {airingToday.map(item => (
+                            {airingToday.map(item => (
                                     <Poster
                                         key={item.id}
                                         id={item.id}
@@ -49,14 +32,7 @@ const TVPresenter = ({airingToday, onTheAir, topRated, loading}) => {
                                 ))}
                             </Section>
                         )}
-                    
-                        {/* <div>
-                            {onTheAir.map(item => (
-                                <div key={item.id}>
-                                    <p>{item.overview}</p>
-                                </div>
-                            ))}
-                        </div> */}
+                
                     
                         {onTheAir && onTheAir.length > 0 && (
                             <Section title={'On The Air'}>
@@ -72,14 +48,7 @@ const TVPresenter = ({airingToday, onTheAir, topRated, loading}) => {
                                 ))}
                             </Section>
                         )}
-                    
-                        {/* <div>
-                            {topRated.map(item => (
-                                <div key={item.id}>
-                                    <span>{item.name}</span>
-                                </div>
-                            ))}
-                        </div> */}
+                
                     
                         {topRated && topRated.length > 0 && (
                             <Section title={'Top Rated'}>

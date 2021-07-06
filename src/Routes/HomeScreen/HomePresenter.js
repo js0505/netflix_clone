@@ -1,13 +1,3 @@
-// import React from 'react';
-
-// const HomePresenter = ({nowPlaying, topRated, upComing}) => {
-//     return (
-//     );
-// };
-
-// export default HomePresenter;
-
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from '../../Components/Loader';
@@ -23,21 +13,18 @@ const Container = styled.div`
 //로딩 프로퍼티 추가
 const HomePresenter = ({nowPlaying, topRated, upComing, loading}) => {
     return (
+        //state의 loading 부분이 데이터를 받아서 true로 변하면
+        // 하단의 페이지 데이터 리턴.
         loading 
             ? (
                 <Loader />
             ) : (
                 <Container>
-
-                    {/* {nowPlaying.map(item => (
-                        <div key={item.id}>
-                            <h1>{item.title}</h1>    
-                        </div>
-                    ))} */}
-
+                    
                     {nowPlaying && nowPlaying.length > 0 && (
                         <Section title={"Now Playing"}>
                             {nowPlaying.map(movie => (
+                                //데이터를 매핑할 때 항상 중복되지 않는 key 값을 props로 넣을 수 있도록!
                                 <Poster
                                     key={movie.id}
                                     id={movie.id}
@@ -50,12 +37,6 @@ const HomePresenter = ({nowPlaying, topRated, upComing, loading}) => {
                             ))}
                         </Section>
                     )}
-
-                    {/* {topRated.map(item => (
-                        <div key={item.id}>
-                            <h3>{item.title}</h3>
-                        </div>
-                    ))} */}
 
                     {topRated && topRated.length > 0 && (
                         <Section title={'Top Rated'}>
@@ -72,12 +53,6 @@ const HomePresenter = ({nowPlaying, topRated, upComing, loading}) => {
                             ))}
                         </Section>
                     )}
-
-                    {/* {upComing.map(item => (
-                        <div key={item.id}>
-                            <h3>{item.title}</h3>
-                        </div>
-                    ))} */}
 
                     {upComing && upComing.length > 0 && (
                         <Section title={'UpComing'}>

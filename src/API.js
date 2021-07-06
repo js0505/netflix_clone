@@ -8,7 +8,8 @@ const makeRequest = async (path, params) => {
     return (
         await axios.get(`https://api.themoviedb.org/3${path}`, {
             params: {
-                api_key : TMDB_KEY,...params
+                api_key: TMDB_KEY,
+                ...params
             }
         }
     ))
@@ -25,27 +26,17 @@ const getResponse = async (path, params = {}) => {
         // data.results 를 새로운 문법으로 작성하고
         // key 값을 그대로 상수에 담은 뒤에 리턴.
         const {
+            //id값으로 detail을 받아오는 데이터는 바로 객체안에 다양한 데이터가 한번에 들어와서
+            //그냥 data 로만 받는다.
             data: { results },
             data
         } = await makeRequest(path, params)
         return [results || data, null]
-        //왜 배열로 리턴을 하는지 ? -> 데이터를 리턴받는 route 페이지에서 정상 응답, 에러를 배열로 받음.
     } catch(e) {
         console.log(e);
         return [null, e];
     }
 }
-
-// const getResponse = async (path, params = {}) => {
-//     await axios
-//         .get(`https://api.themoviedb.org/3${path}`, {params: {api_key : TMDB_KEY,...params}})
-//         .then(res => {
-//             const {data : { results }} = res;
-//             return [results, null]
-//         })
-//         .catch(err => console.log(err))
-// } 
-
 
 
 // getResponse 함수를 통해 공통된 주소 이후의 path 값을 인자로 보낸다.

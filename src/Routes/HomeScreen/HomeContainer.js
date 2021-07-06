@@ -7,11 +7,6 @@ import HomePresenter from './HomePresenter';
 
 const HomeContainer = () => {
 
-    // const [nowPlaying , setNowPlaying] = useState([]);
-    // const [topRated, setTopRated] = useState([]);
-    // const [upComing, setUpComing] = useState([]);
-
-    // const [nowPlayingErr, setNowPlayingErr] = useState("");
 
     const [movies, setMovies] = useState({
         nowPlaying: [],
@@ -28,10 +23,14 @@ const HomeContainer = () => {
     })
     
     const getData = async () => {
+
+        //state 내의 키 값과 받아오는 데이터의 값의 이름을 일치 시키면
+        //set 하는 부분에서 간결하게 작성할 수 있다.
+        
         const [nowPlaying , nowPlayingErr] = await movieAPI.nowPlaying();
         const [upComing, upComingErr] = await movieAPI.upComing();
         const [topRated, topRatedErr] = await movieAPI.topRated();
-        
+        console.log(nowPlaying)
         setMovies({
             nowPlaying,
             topRated,
@@ -41,13 +40,6 @@ const HomeContainer = () => {
             topRatedErr,
             loading: false
         })
-        // setNowPlaying(nowPlaying);
-        // setTopRated(upComing);
-        // setUpComing(topRated);
-
-        // setNowPlayingErr(nowPlayingErr);
-
-        
     }
 
     useEffect(() => {

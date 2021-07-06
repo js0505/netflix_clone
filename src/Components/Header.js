@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 
@@ -42,7 +42,13 @@ const SLink = styled(Link)`
 `;
 
 
-const Header = withRouter(({location: {pathname}}) => {
+const Header = () => {
+
+    // react-router-dom의 hook 을 이용하여
+    // withRouter 대신 이용해보기.
+
+    const {pathname} = useLocation();
+
     return (
         <Container>
             <List>
@@ -53,11 +59,11 @@ const Header = withRouter(({location: {pathname}}) => {
                     <SLink to="/tv">Tv</SLink>
                 </Item>
                 <Item current={pathname ==='/search'}>
-                    <SLink to="/Search_practice">Search</SLink>
+                    <SLink to="/search">Search</SLink>
                 </Item>
             </List>
         </Container>
     );
-});
+};
 
 export default Header;

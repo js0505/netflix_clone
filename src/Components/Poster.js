@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import emptyImage from '../assets/empty-image.png'
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom'
 
@@ -52,14 +53,18 @@ const Release = styled(Moment)`
 const Poster = ({ id, title, rating, release, poster, isMovie=false }) => {
 
     return (
+
+        // 여기서 Movie 페이지 에서만 isMovie = true가 들어오기 때문에
+        // Link 컴포넌트는 그 값에 따라서 path를 다르게 부여한다.
         <Link to={isMovie ? `/movie/${id}` : `/tv/${id}`}>
             <Container>
                 <ImageContainer>
                     <Image
                         bgurl={
-                            poster
-                                ? `https://image.tmdb.org/t/p/w500${poster}`
-                                : require('../assets/empty-image.jpg')
+                            //상단에서 그림파일을 import 해서 연결.
+                            (poster === null)
+                                ? emptyImage
+                                : `https://image.tmdb.org/t/p/w500${poster}` 
                         }
                     />
                     <Rating>
@@ -67,6 +72,9 @@ const Poster = ({ id, title, rating, release, poster, isMovie=false }) => {
                         {rating} / 10
                     </Rating>
                 </ImageContainer>
+                {/* substring(start, end) : start와 end 사이 */}
+                {/* title의 길이가 18보다 작으면 substring으로 글자를 자르고 뒤에 '...' 표기 
+                    아니면 title 그대로 표기. */}
                 <Title>{title.length > 18 ? `${title.substring(0, 18)}...` : title}</Title>
                 <Release format={'MM월 DD일 YYYY년'}>{release}</Release>
             </Container>
