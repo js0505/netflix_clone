@@ -25,11 +25,7 @@ const DetailContainer = () => {
 
     useEffect(() => {
         getDetail();
-<<<<<<< Updated upstream
-    }, {})
-=======
     })
->>>>>>> Stashed changes
 
     return (
         <div>
