@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import Loader from '../../Components/Loader';
 import styled from 'styled-components';
 
+import Poster from '../../Components/Poster';
 import Section from '../../Components/Section';
 
 const Container = styled.div`
@@ -37,7 +38,14 @@ const TVPresenter = ({airingToday, onTheAir, topRated, loading}) => {
                         {airingToday && airingToday.length > 0 && (
                             <Section title={'Airing Today'}>
                                 {airingToday.map(item => (
-                                    <h1 key={item.id}>{item.name}</h1>
+                                    <Poster
+                                        key={item.id}
+                                        id={item.id}
+                                        title={item.name}
+                                        rating={item.vote_average}
+                                        release={item.first_air_date}
+                                        poster={item.poster_path}
+                                    />
                                 ))}
                             </Section>
                         )}
@@ -53,7 +61,14 @@ const TVPresenter = ({airingToday, onTheAir, topRated, loading}) => {
                         {onTheAir && onTheAir.length > 0 && (
                             <Section title={'On The Air'}>
                                 {onTheAir.map(item => (
-                                    <span key={item.id}>{item.name}</span>
+                                    <Poster
+                                        key={item.id}
+                                        id={item.id}
+                                        title={item.name}
+                                        rating={item.vote_average}
+                                        release={item.first_air_date}
+                                        poster={item.poster_path}
+                                    />
                                 ))}
                             </Section>
                         )}
@@ -69,7 +84,14 @@ const TVPresenter = ({airingToday, onTheAir, topRated, loading}) => {
                         {topRated && topRated.length > 0 && (
                             <Section title={'Top Rated'}>
                                 {topRated.map(item => (
-                                    <span key={item.id}>{item.name}</span>
+                                    <Poster
+                                        key={item.id}
+                                        id={item.id}
+                                        title={item.name}
+                                        rating={item.vote_average}
+                                        release={item.first_air_date}
+                                        poster={item.poster_path}
+                                    />
                                 ))}
                             </Section>
                         )}

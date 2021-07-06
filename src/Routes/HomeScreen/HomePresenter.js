@@ -15,6 +15,7 @@ import Loader from '../../Components/Loader';
 import styled from 'styled-components';
 
 import Section from '../../Components/Section';
+import Poster from '../../Components/Poster';
 
 const Container = styled.div`
     padding: 0 20px;
@@ -38,7 +39,14 @@ const HomePresenter = ({nowPlaying, topRated, upComing, loading}) => {
                     {nowPlaying && nowPlaying.length > 0 && (
                         <Section title={"Now Playing"}>
                             {nowPlaying.map(movie => (
-                                <h1 key={movie.id}>{movie.title}</h1>
+                                <Poster
+                                    key={movie.id}
+                                    id={movie.id}
+                                    title={movie.title}
+                                    rating={movie.vote_average}
+                                    release={movie.release_date}
+                                    poster={movie.poster_path}
+                                />
                             ))}
                         </Section>
                     )}
@@ -52,7 +60,14 @@ const HomePresenter = ({nowPlaying, topRated, upComing, loading}) => {
                     {topRated && topRated.length > 0 && (
                         <Section title={'Top Rated'}>
                             {topRated.map(movie => (
-                                <span key={movie.id}>{movie.title}</span>
+                                <Poster
+                                    key={movie.id}
+                                    id={movie.id}
+                                    title={movie.title}
+                                    rating={movie.vote_average}
+                                    release={movie.release_date}
+                                    poster={movie.poster_path}
+                                />
                             ))}
                         </Section>
                     )}
@@ -66,7 +81,14 @@ const HomePresenter = ({nowPlaying, topRated, upComing, loading}) => {
                     {upComing && upComing.length > 0 && (
                         <Section title={'UpComing'}>
                             {upComing.map(movie => (
-                                <span key={movie.id}>{movie.title}</span>
+                                <Poster
+                                    key={movie.id}
+                                    id={movie.id}
+                                    title={movie.title}
+                                    rating={movie.vote_average}
+                                    release={movie.release_date}
+                                    poster={movie.poster_path}
+                                />
                             ))}
                         </Section>
                     )}
