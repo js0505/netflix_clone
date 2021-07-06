@@ -6,6 +6,7 @@ import HomeScreen from '../Routes/HomeScreen'
 import TvScreen from '../Routes/TVScreen'
 import SearchScreen from '../Routes/SearchScreen';
 import Header from './Header';
+import DetailScreen from '../Routes/DetailScreen'
 
 
 const ScreenRouter = () => {
@@ -22,6 +23,8 @@ const ScreenRouter = () => {
                     <Route path='/' exact component={HomeScreen} />
                     <Route path='/tv' exact component={TvScreen} />
                     <Route path='/search' exact component={SearchScreen} />
+                    <Route path='/movie/:id' exact component={DetailScreen} />
+                    <Route path='/tv/:id' exact component={DetailScreen}/>
                     {/* 외에 정의되지 않은 페이지로 요청 시 루트로 리다이렉트 */}
                     <Redirect from={'*'} to={"/"} />
                 </Switch>

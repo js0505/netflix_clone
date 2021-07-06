@@ -15,7 +15,7 @@ const Grid = styled.div`
 `;
 
 const Title = styled.span`
-    font-size: 18px;
+    font-size: 30px;
     font-weight: 600;
 `;
 

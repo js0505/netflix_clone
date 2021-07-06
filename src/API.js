@@ -24,8 +24,11 @@ const getResponse = async (path, params = {}) => {
         // 응답 스키마 안에 {data : { 응답 들어온 내용 }}이 들어 있으므로
         // data.results 를 새로운 문법으로 작성하고
         // key 값을 그대로 상수에 담은 뒤에 리턴.
-        const {data : { results }} = await makeRequest(path, params)
-        return [results, null]
+        const {
+            data: { results },
+            data
+        } = await makeRequest(path, params)
+        return [results || data, null]
         //왜 배열로 리턴을 하는지 ? -> 데이터를 리턴받는 route 페이지에서 정상 응답, 에러를 배열로 받음.
     } catch(e) {
         console.log(e);
@@ -49,12 +52,14 @@ const getResponse = async (path, params = {}) => {
 export const movieAPI = {
     nowPlaying : () => getResponse("/movie/now_playing"),
     topRated : () => getResponse("/movie/top_rated"),
-    upComing : () => getResponse("/movie/upcoming")
+    upComing: () => getResponse("/movie/upcoming"),
+    movieDetail: (id) => getResponse(`/movie/${id}`)
 }
 
 export const tvAPI = {
     airingToday : () => getResponse("/tv/airing_today"),
     onTheAir : () => getResponse("/tv/on_the_air"),
-    topRated : () => getResponse("/tv/top_rated")
+    topRated: () => getResponse("/tv/top_rated"),
+    tvDetail: (id) => getResponse(`/tv/${id}`)
 }
 

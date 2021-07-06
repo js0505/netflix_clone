@@ -2,7 +2,6 @@
 
 // const HomePresenter = ({nowPlaying, topRated, upComing}) => {
 //     return (
-        
 //     );
 // };
 
@@ -46,6 +45,7 @@ const HomePresenter = ({nowPlaying, topRated, upComing, loading}) => {
                                     rating={movie.vote_average}
                                     release={movie.release_date}
                                     poster={movie.poster_path}
+                                    isMovie={true}
                                 />
                             ))}
                         </Section>
@@ -67,6 +67,7 @@ const HomePresenter = ({nowPlaying, topRated, upComing, loading}) => {
                                     rating={movie.vote_average}
                                     release={movie.release_date}
                                     poster={movie.poster_path}
+                                    isMovie={true}
                                 />
                             ))}
                         </Section>
@@ -88,6 +89,7 @@ const HomePresenter = ({nowPlaying, topRated, upComing, loading}) => {
                                     rating={movie.vote_average}
                                     release={movie.release_date}
                                     poster={movie.poster_path}
+                                    isMovie={true}
                                 />
                             ))}
                         </Section>

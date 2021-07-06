@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Moment from 'react-moment';
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
     font-size: 12px;
@@ -48,35 +49,40 @@ const Release = styled(Moment)`
 `;
 
 
-const Poster = ({ id, title, rating, release, poster }) => {
+const Poster = ({ id, title, rating, release, poster, isMovie=false }) => {
 
     return (
-        <Container>
-            <ImageContainer>
-                <Image
-                    bgurl={
-                        poster
-                            ? `https://image.tmdb.org/t/p/w500${poster}`
-                            : require('../assets/empty-image.jpg')
-                    }
-                />
-                <Rating>
-                    <span role='img' aria-label='vote'>⭐️</span>
-                    {rating} / 10
-                </Rating>
-            </ImageContainer>
-            <Title>{title.length > 18 ? `${title.substring(0, 18)}...` : title}</Title>
-            <Release format={'MM월 DD일 YYYY년'}>{release}</Release>
-        </Container>
+        <Link to={isMovie ? `/movie/${id}` : `/tv/${id}`}>
+            <Container>
+                <ImageContainer>
+                    <Image
+                        bgurl={
+                            poster
+                                ? `https://image.tmdb.org/t/p/w500${poster}`
+                                : require('../assets/empty-image.jpg')
+                        }
+                    />
+                    <Rating>
+                        <span role='img' aria-label='vote'>⭐️</span>
+                        {rating} / 10
+                    </Rating>
+                </ImageContainer>
+                <Title>{title.length > 18 ? `${title.substring(0, 18)}...` : title}</Title>
+                <Release format={'MM월 DD일 YYYY년'}>{release}</Release>
+            </Container>
+        </Link>
     );
 };
+
+
 
 Poster.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     release: PropTypes.string,
-    poster: PropTypes.string
+    poster: PropTypes.string,
+    isMovie: PropTypes.bool
 };
 
 export default Poster;
