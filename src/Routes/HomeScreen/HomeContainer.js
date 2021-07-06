@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {movieAPI} from '../API'
+import {movieAPI} from '../../API'
 
-const Home = () => {
+
+//기존 페이지 부분을 container로
+
+
+const HomeContainer = () => {
 
     const [nowPlaying , setNowPlaying] = useState([]);
     const [topRated, setTopRated] = useState([]);
@@ -53,4 +57,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default HomeContainer;

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {tvAPI} from '../API'
+import {tvAPI} from '../../API'
 
 const Tv = () => {
 

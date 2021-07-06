@@ -9,14 +9,11 @@ const Search = () => {
     const [search, setSearch] = useState([]);
     const [querys, setQuery] = useState('');
 
-    const makeRequest = async (path, params) => {
+    const makeRequest = async () => {
         return (
-        await axios.get(`https://api.themoviedb.org/3${path}`, 
-            {params: {
-                api_key : TMDB_KEY,
-                query : querys
-            }}
-            )
+            await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=3b657ad90355e4ff973a1a4745dac62a&language=en-US&query=${querys}&page=1&include_adult=false`)
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err))
         )
     }
     
@@ -52,7 +49,7 @@ const Search = () => {
     return (
         <div>
             <input type='text' onChange={onChange} value={querys}/>
-            <button onClick={getData}>다시</button>
+            <button onClick={makeRequest}>다시</button>
             <h1>Search</h1>
             <h2>{search.title}</h2>
         </div>

@@ -53,7 +53,7 @@ const Header = withRouter(({location: {pathname}}) => {
                     <SLink to="/tv">Tv</SLink>
                 </Item>
                 <Item current={pathname ==='/search'}>
-                    <SLink to="/search">Search</SLink>
+                    <SLink to="/Search_practice">Search</SLink>
                 </Item>
             </List>
         </Container>
