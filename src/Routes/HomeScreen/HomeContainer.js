@@ -1,27 +1,47 @@
 import React, {useState, useEffect} from 'react';
 import {movieAPI} from '../../API'
-
+import HomePresenter from './HomePresenter';
 
 //기존 페이지 부분을 container로
 
 
 const HomeContainer = () => {
 
-    const [nowPlaying , setNowPlaying] = useState([]);
-    const [topRated, setTopRated] = useState([]);
-    const [upComing, setUpComing] = useState([]);
+    // const [nowPlaying , setNowPlaying] = useState([]);
+    // const [topRated, setTopRated] = useState([]);
+    // const [upComing, setUpComing] = useState([]);
 
+    // const [nowPlayingErr, setNowPlayingErr] = useState("");
+
+    const [movies, setMovies] = useState({
+        nowPlaying: [],
+        topRated: [],
+        upComing: [],
+        nowPlayingErr: null,
+        topRatedErr: null,
+        upComingErr: null
+    })
     
     const getData = async () => {
-        const [nowRes , nowResErr] = await movieAPI.nowPlaying();
-        const [upRes, upResErr] = await movieAPI.upComing();
-        const [topRes, topResErr] = await movieAPI.topRated();
+        const [nowPlaying , nowPlayingErr] = await movieAPI.nowPlaying();
+        const [upComing, upComingErr] = await movieAPI.upComing();
+        const [topRated, topRatedErr] = await movieAPI.topRated();
         
-        setNowPlaying(nowRes);
-        setTopRated(topRes);
-        setUpComing(upRes);
+        setMovies({
+            nowPlaying,
+            topRated,
+            upComing,
+            nowPlayingErr,
+            upComingErr,
+            topRatedErr
+        })
+        // setNowPlaying(nowPlaying);
+        // setTopRated(upComing);
+        // setUpComing(topRated);
 
-        console.log(nowResErr, topResErr, upResErr);
+        // setNowPlayingErr(nowPlayingErr);
+
+        
     }
 
     useEffect(() => {
@@ -30,30 +50,7 @@ const HomeContainer = () => {
 
 
     return (
-        <div>
-            <div>
-                {nowPlaying.map(item => (
-                    <h1>{item.title}</h1>
-                ))}
-            </div>
-
-            <br />
-            <br />
-            
-            <div>
-                {topRated.map(item => (
-                    <h3>{item.title}</h3>
-                ))}
-            </div>
-            <br />
-            <br />
-            
-            <div>
-                {upComing.map(item => (
-                    <h3>{item.title}</h3>
-                ))}
-            </div>
-        </div>
+        <HomePresenter {...movies} />
     );
 };
 

@@ -1,22 +1,42 @@
 import React, {useState, useEffect} from 'react';
 import {tvAPI} from '../../API'
+import TVPresenter from './TVPresenter';
 
-const Tv = () => {
+const TvContainer = () => {
 
-    const [airingToday, setAiringToday] = useState([]);
-    const [onTheAir, setOnTheAir] = useState([]);
-    const [topRated, setTopRated] = useState([]);
+    // const [airingToday, setAiringToday] = useState([]);
+    // const [onTheAir, setOnTheAir] = useState([]);
+    // const [topRated, setTopRated] = useState([]);
+
+    const [tvs, setTvs] = useState({
+        airingToday: [],
+        onTheAir: [],
+        topRated: [],
+        airingTodayErr: null,
+        onTheAirErr: null,
+        topRatedErr: null
+    })
+
 
     const getData = async () => {
-        const [airRes, airResError] = await tvAPI.airingToday();
-        const [onTheAirRes, onResError] = await tvAPI.onTheAir();
-        const [topRatedRes, topResError] = await tvAPI.topRated();
+        const [airingToday, airingTodayErr] = await tvAPI.airingToday();
+        const [onTheAir, onTheAirErr] = await tvAPI.onTheAir();
+        const [topRated, topRatedErr] = await tvAPI.topRated();
         
-        setAiringToday(airRes);
-        setOnTheAir(onTheAirRes);
-        setTopRated(topRatedRes);
+        // setAiringToday(airingToday);
+        // setOnTheAir(onTheAir);
+        // setTopRated(topRated);
 
-        console.log(airResError, onResError, topResError);
+        setTvs({
+            airingToday,
+            onTheAir,
+            topRated,
+            airingTodayErr,
+            onTheAirErr,
+            topRatedErr
+        })
+
+        // console.log(airingTodayErr, onTheAirErr, topRatedErr);
     }
 
     useEffect(() => {
@@ -24,24 +44,8 @@ const Tv = () => {
     }, [])
 
     return (
-        <div>
-            <div>
-                {airingToday.map(item => (
-                    <h1>{item.name}</h1>
-                ))}
-            </div>
-            <div>
-                {onTheAir.map(item => (
-                    <p>{item.overview}</p>
-                ))}
-            </div>
-            <div>
-                {topRated.map(item => (
-                    <span>{item.name}</span>
-                ))}
-            </div>
-        </div>
+        <TVPresenter {...tvs} />
     );
 };
 
-export default Tv;
+export default TvContainer;
