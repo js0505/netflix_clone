@@ -10,43 +10,72 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Loader from '../../Components/Loader';
+import styled from 'styled-components';
+
+import Section from '../../Components/Section';
+
+const Container = styled.div`
+    padding: 0 20px;
+`;
 
 const TVPresenter = ({airingToday, onTheAir, topRated, loading}) => {
     return (
-        <div>
-            {loading
+            loading
                 ? (
-                    <div>
-                        <h1>Loading</h1>
-                    </div>
-                )
-                : (
-                    <>
-                        <div>
+                    <Loader />
+                ) : (
+                    <Container>
+                        {/* <div>
                             {airingToday.map(item => (
                                 <div key={item.id}>
                                     <h1>{item.name}</h1>
                                 </div>
                             ))}
-                        </div>
-                        <div>
+                        </div> */}
+                    
+                        {airingToday && airingToday.length > 0 && (
+                            <Section title={'Airing Today'}>
+                                {airingToday.map(item => (
+                                    <h1 key={item.id}>{item.name}</h1>
+                                ))}
+                            </Section>
+                        )}
+                    
+                        {/* <div>
                             {onTheAir.map(item => (
                                 <div key={item.id}>
                                     <p>{item.overview}</p>
                                 </div>
                             ))}
-                        </div>
-                        <div>
+                        </div> */}
+                    
+                        {onTheAir && onTheAir.length > 0 && (
+                            <Section title={'On The Air'}>
+                                {onTheAir.map(item => (
+                                    <span key={item.id}>{item.name}</span>
+                                ))}
+                            </Section>
+                        )}
+                    
+                        {/* <div>
                             {topRated.map(item => (
                                 <div key={item.id}>
                                     <span>{item.name}</span>
                                 </div>
                             ))}
-                        </div>
-                    </>
+                        </div> */}
+                    
+                        {topRated && topRated.length > 0 && (
+                            <Section title={'Top Rated'}>
+                                {topRated.map(item => (
+                                    <span key={item.id}>{item.name}</span>
+                                ))}
+                            </Section>
+                        )}
+                    </Container>
                 )
-            }
-        </div>
+            
     );
 };
 
