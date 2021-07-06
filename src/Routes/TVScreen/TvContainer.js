@@ -14,7 +14,8 @@ const TvContainer = () => {
         topRated: [],
         airingTodayErr: null,
         onTheAirErr: null,
-        topRatedErr: null
+        topRatedErr: null,
+        loading: true
     })
 
 
@@ -33,7 +34,8 @@ const TvContainer = () => {
             topRated,
             airingTodayErr,
             onTheAirErr,
-            topRatedErr
+            topRatedErr,
+            loading: false
         })
 
         // console.log(airingTodayErr, onTheAirErr, topRatedErr);
