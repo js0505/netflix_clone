@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import {tvAPI} from '../../API'
+
 import TVPresenter from './TVPresenter';
 
 const TvContainer = () => {
@@ -14,12 +15,11 @@ const TvContainer = () => {
         loading: true
     })
 
+    const getTvs = async () => {
+        const [airingToday, airingTodayErr] = await tvAPI.airingToday()
+        const [onTheAir, onTheAirErr] = await tvAPI.onTheAir()
+        const [topRated, topRatedErr] = await tvAPI.topRated()
 
-    const getData = async () => {
-        const [airingToday, airingTodayErr] = await tvAPI.airingToday();
-        const [onTheAir, onTheAirErr] = await tvAPI.onTheAir();
-        const [topRated, topRatedErr] = await tvAPI.topRated();
-        
         setTvs({
             airingToday,
             onTheAir,
@@ -32,11 +32,13 @@ const TvContainer = () => {
     }
 
     useEffect(() => {
-        getData();
+        getTvs()
     }, [])
 
     return (
-        <TVPresenter {...tvs} />
+        <div>
+            <TVPresenter {...tvs}/>
+        </div>
     );
 };
 
