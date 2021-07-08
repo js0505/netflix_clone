@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import DetailScreen from '../Routes/DetailScreen';
 import HomeScreen from '../Routes/HomeScreen';
-import TvScreen from '../Routes/TvScreen';
+import TvScreen from '../Routes/TVScreen';
 
 
 const ScreenRouter = () => {
