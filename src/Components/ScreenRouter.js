@@ -4,13 +4,14 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import DetailScreen from '../Routes/DetailScreen';
 import HomeScreen from '../Routes/HomeScreen';
-import TvScreen from '../Routes/TvScreen'
+import TvScreen from '../Routes/TvScreen';
 
 
 const ScreenRouter = () => {
     return (
         <Router>
             <Header />
+            <>
             <Switch>
                 <Route path='/' exact component={HomeScreen} />
                 <Route path='/tv' exact component={TvScreen} />
@@ -18,6 +19,7 @@ const ScreenRouter = () => {
                 <Route path='/movie/:id' exact component={DetailScreen} />
                 <Route path='/tv/:id' exact component={DetailScreen} />
             </Switch>
+            </>
         </Router>
     );
 };
