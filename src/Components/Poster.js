@@ -1,27 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import EmptyImage from '../assets/empty-image.png'
 import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
+
+import EmptyPoster from '../assets/empty-image.png'
 
 const Container = styled.div`
-    font-size: 12px;
 `;
 
-const Image = styled.div`
+const Img = styled.div`
     height: 180px;
+    border-radius: 5px;
     background-size: cover;
-    border-radius: 4px;
     background-position: center;
-    transition: opacity 0.1s linear;
     background-image: url(${(props) => props.bgurl});
+    opacity: 1;
+    transition: opacity 0.1s linear;
 `;
 
 const Rating = styled.span`
+    position: absolute;
     bottom: 10px;
     right: 10px;
-    position: absolute;
     opacity: 0;
     transition: opacity 0.1s linear;
 `;
@@ -33,50 +34,52 @@ const ImageContainer = styled.div`
         ${Rating} {
             opacity: 1;
         }
-        ${Image} {
+        ${Img} {
             opacity: 0.3;
         }
     }
 `;
 
 const Title = styled.span`
-    display: block;
     margin-bottom: 3px;
+    display: block;
+    font-size: 12px;
+`;
+
+const Release = styled(Moment)`
+    font-size: 10px;
 `;
 
 
-const Poster = ({id, title, rating, poster, release, isMovie = false}) => {
+const Poster = ({id, title, poster, rating, release, isMovie = false}) => {
     return (
-        <Link to={
-            isMovie
-            ? `/movie/${id}`
-            : `/tv/${id}`
-        }>
+        <Link to={isMovie ? `/movie/${id}` : `/tv/${id}`}>
             <Container>
-                <ImageContainer>
-                    <Image
-                        bgurl={
-                            poster === null
-                                ? EmptyImage
-                                : `https://image.tmdb.org/t/p/w500/${poster}`
-                        }>
-                    </Image>
-                    <Rating role='img' aria-label='vote'>⭐️{rating} / 10</Rating>
-                </ImageContainer>
-                <Title>{title}</Title>
-                <Moment format={'YY년 MM월 DD일'}>{ release }</Moment>
-            </Container>
+            <ImageContainer>
+                    <Img bgurl={
+                        (poster === null)
+                            ? (EmptyPoster)
+                            : (`https://image.tmdb.org/t/p/w500${poster}`)} />
+                <Rating>⭐️{rating}/10</Rating>
+            </ImageContainer>
+            <Title>{
+                title.length > 18
+                    ? `${title.substring(0, 18)}...` 
+                    : title
+            }</Title>
+            <Release format={'YY년 MM월 YY일'}>{release}</Release>
+        </Container>
         </Link>
+        
     );
 };
 
 Poster.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
     poster: PropTypes.string,
-    release: PropTypes.string,
-    isMovie: PropTypes.bool
+    rating: PropTypes.string,
+    release: PropTypes.string
 };
 
 export default Poster;

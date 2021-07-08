@@ -2,74 +2,65 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Loader from '../../Components/Loader';
-import Section from '../../Components/Section';
 import Poster from '../../Components/Poster';
+import Section from '../../Components/Section';
+import Loader from '../../Components/Loader';
 
 const Container = styled.div`
     padding: 0 20px;
 `;
 
-const TVPresenter = ({ airingToday, onTheAir, topRated, loading }) => {
+const TVPresenter = ({airingToday, onTheAir, topRated, loading}) => {
     return (
         loading
-            ? <Loader />
-            : (
-                <Container>
-
-                    {airingToday && airingToday.length > 0 && (
-                        <Section title={'Airing Today'}>
-                            {airingToday.map(tv => (
-                                <Poster
-                                    key={tv.id}
-                                    id={tv.id}
-                                    title={tv.name}
-                                    rating={tv.vote_average}
-                                    poster={tv.poster_path}
-                                    release={tv.first_air_date}
-                                />
-                            ))}
-                        </Section>
-                    )}
-
-                    {onTheAir && onTheAir.length > 0 && (
-                        <Section title={'Airing Today'}>
-                            {onTheAir.map(tv => (
-                                <Poster
-                                    key={tv.id}
-                                    id={tv.id}
-                                    title={tv.name}
-                                    rating={tv.vote_average}
-                                    poster={tv.poster_path}
-                                    release={tv.first_air_date}
-                                />
-                            ))}
-                        </Section>
-                    )}
-
-                    {topRated && topRated.length > 0 && (
-                        <Section title={'Airing Today'}>
-                            {topRated.map(tv => (
-                                <Poster
-                                    key={tv.id}
-                                    id={tv.id}
-                                    title={tv.name}
-                                    rating={tv.vote_average}
-                                    poster={tv.poster_path}
-                                    release={tv.first_air_date}
-                                />
-                            ))}
-                        </Section>
-                    )}
-                </Container>
-            )
+            ? (
+            <Loader />
+            ) : (
+            <Container>
+                <Section title={'Airing Today'}>
+                    {airingToday.map(item => (
+                        <Poster
+                            key={item.id}
+                            id={item.id}
+                            title={item.name}
+                            poster={item.poster_path}
+                            rating={item.vote_average}
+                            release={item.first_air_date}/>
+                ))}        
+                </Section>
+                    
+                <Section title={'On The Air'}>
+                    {onTheAir.map(item => (
+                        <Poster
+                            key={item.id}
+                            id={item.id}
+                            title={item.name}
+                            poster={item.poster_path}
+                            rating={item.vote_average}
+                            release={item.first_air_date}/>
+                ))}        
+                </Section>
+                
+                <Section title={'Top Rated'}>
+                    {topRated.map(item => (
+                        <Poster
+                            key={item.id}
+                            id={item.id}
+                            title={item.name}
+                            poster={item.poster_path}
+                            rating={item.vote_average}
+                            release={item.first_air_date}/>
+                ))}        
+                </Section>
+            </Container>
+        )
     );
 };
 
 TVPresenter.propTypes = {
-    airingToday: PropTypes.array.isRequired,
-    onTheAir: PropTypes.array.isRequired,
-    topRated: PropTypes.array.isRequired,
+    airingToday: PropTypes.array,
+    onTheAir: PropTypes.array,
+    topRated: PropTypes.array,
     loading: PropTypes.bool
 };
 

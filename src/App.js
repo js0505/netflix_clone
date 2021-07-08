@@ -1,11 +1,11 @@
 import React from 'react';
 import ScreenRouter from './Components/ScreenRouter';
-import GlobalStyles from './Components/GlobalStyles';
+import GlobalStyle from './Components/GlobalStyle';
 
 const App = () => {
   return (
     <div>
-      <GlobalStyles />
+      <GlobalStyle />
       <ScreenRouter />
     </div>
   );

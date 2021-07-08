@@ -1,13 +1,13 @@
-import {createGlobalStyle} from 'styled-components';
-import reset from 'styled-reset';
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
-const globalStyles = createGlobalStyle`
-    ${reset};
+const globalStyle = createGlobalStyle`
+    ${reset}
+
     a {
         text-decoration: none;
         color: inherit;
     }
-
     * {
         box-sizing: border-box;
     }
@@ -21,4 +21,4 @@ const globalStyles = createGlobalStyle`
 
 `;
 
-export default globalStyles;
+export default globalStyle;

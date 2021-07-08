@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Container = styled.div`
+    margin: 0 60px;
     margin-bottom: 40px;
-    margin-left: 30px;
 `;
 
 const Title = styled.span`
