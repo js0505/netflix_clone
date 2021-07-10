@@ -1,9 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import { movieAPI } from '../../API'
-import HomePresenter from './HomePresenter';
+import React, { useEffect, useState } from 'react';
 
-
-
+import {movieAPI} from '../../API'
+import HomePresenter from './HomePresenter'
 
 const HomeContainer = () => {
 
@@ -17,10 +15,10 @@ const HomeContainer = () => {
         loading: true
     });
 
-    const getMovie = async () => {
-        const [nowPlaying, nowPlayingErr] = await movieAPI.nowPlaying()
-        const [topRated, topRatedErr] = await movieAPI.nowPlaying()
-        const [upComing, upComingErr] = await movieAPI.nowPlaying()
+    const getMovies = async () => {
+        const [nowPlaying, nowPlayingErr] = await movieAPI.nowPlaying();
+        const [topRated, topRatedErr] = await movieAPI.topRated();
+        const [upComing, upComingErr] = await movieAPI.upComing();
 
         setMovies({
             nowPlaying,
@@ -34,17 +32,15 @@ const HomeContainer = () => {
     }
 
     useEffect(() => {
-        getMovie()
+        getMovies();
     }, [])
-
 
 
     return (
         <div>
-            <HomePresenter {...movies}/>
+            <HomePresenter {...movies} />
         </div>
     );
 };
-
 
 export default HomeContainer;

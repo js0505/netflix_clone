@@ -2,19 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+    height: 100vh;
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    font-size: 32px;
+    margin-top: 50px;
 `;
 
-const Emoji = styled.span`
-    font-size: 200px;
-`;
 
 const Loader = () => {
     return (
         <Container>
-            <Emoji>🤩</Emoji>
+            <span role='img' aria-label='Loading'>😄</span>
         </Container>
     );
 };

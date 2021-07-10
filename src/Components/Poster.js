@@ -3,19 +3,18 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
-
 import EmptyPoster from '../assets/empty-image.png'
 
 const Container = styled.div`
+    font-size: 12px;
 `;
 
-const Img = styled.div`
+const Image = styled.div`
     height: 180px;
-    border-radius: 5px;
-    background-size: cover;
+    border-radius: 3px;
     background-position: center;
     background-image: url(${(props) => props.bgurl});
-    opacity: 1;
+    background-size: cover;
     transition: opacity 0.1s linear;
 `;
 
@@ -28,47 +27,42 @@ const Rating = styled.span`
 `;
 
 const ImageContainer = styled.div`
-    margin-bottom: 7px;
     position: relative;
+    margin-bottom: 7px;
+    //& 과 :hover 를 띄어쓰기 하면 동작하지 않는다.
     &:hover {
         ${Rating} {
             opacity: 1;
         }
-        ${Img} {
+        ${Image} {
             opacity: 0.3;
         }
     }
 `;
 
 const Title = styled.span`
-    margin-bottom: 3px;
     display: block;
-    font-size: 12px;
+    margin-bottom: 3px;
 `;
 
 const Release = styled(Moment)`
     font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
 `;
 
-
-const Poster = ({id, title, poster, rating, release, isMovie = false}) => {
+const Poster = ({id, poster, rating, title, release, isMovie = false}) => {
     return (
         <Link to={isMovie ? `/movie/${id}` : `/tv/${id}`}>
             <Container>
             <ImageContainer>
-                    <Img bgurl={
-                        (poster === null)
-                            ? (EmptyPoster)
-                            : (`https://image.tmdb.org/t/p/w500${poster}`)} />
+                    <Image bgurl={poster === null
+                        ? EmptyPoster
+                        : `https://image.tmdb.org/t/p/w500${poster}`} />
                 <Rating>⭐️{rating}/10</Rating>
             </ImageContainer>
-            <Title>{
-                title.length > 18
-                    ? `${title.substring(0, 18)}...` 
-                    : title
-            }</Title>
-            <Release format={'YY년 MM월 YY일'}>{release}</Release>
-        </Container>
+            <Title>{title.length > 18 ? `${title.substring(0, 18)}...` : title}</Title>
+            <Release format={'YY / MM / DD'}>{release}</Release>
+            </Container>
         </Link>
         
     );
@@ -76,10 +70,11 @@ const Poster = ({id, title, poster, rating, release, isMovie = false}) => {
 
 Poster.propTypes = {
     id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
     poster: PropTypes.string,
-    rating: PropTypes.string,
-    release: PropTypes.string
+    rating: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    release: PropTypes.string,
+    isMovie: PropTypes.bool
 };
 
 export default Poster;

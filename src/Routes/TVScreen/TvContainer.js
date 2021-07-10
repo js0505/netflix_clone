@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { tvAPI } from '../../API'
-
-import TVPresenter from './TVPresenter';
+import TVPresenter from './TVPresenter'
 
 const TVContainer = () => {
-
 
     const [tvs, setTvs] = useState({
         airingToday: [],
@@ -14,7 +12,7 @@ const TVContainer = () => {
         onTheAirErr: null,
         topRatedErr: null,
         loading: true
-    });
+    })
 
     const getTvs = async () => {
         const [airingToday, airingTodayErr] = await tvAPI.airingToday();
@@ -35,8 +33,11 @@ const TVContainer = () => {
     useEffect(() => {
         getTvs()
     }, [])
+
     return (
-        <TVPresenter {...tvs} />
+        <div>
+            <TVPresenter {...tvs} />
+        </div>
     );
 };
 

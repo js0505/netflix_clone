@@ -3,21 +3,22 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Container = styled.div`
-    margin: 0 60px;
+    margin-left: 30px;
     margin-bottom: 40px;
 `;
 
-const Title = styled.span`
-    font-size: 30px;
+const Title = styled.div`
+    font-size: 28px;
     font-weight: 600;
 `;
 
 const Grid = styled.div`
     margin-top: 25px;
     display: grid;
+    grid-gap : 25px;
     grid-template-columns: repeat(auto-fill, 125px);
-    grid-gap: 25px;
 `;
+
 
 const Section = ({title, children}) => {
     return (
@@ -30,10 +31,10 @@ const Section = ({title, children}) => {
 
 Section.propTypes = {
     title: PropTypes.string.isRequired,
-    children: PropTypes.oneOfType([
+    children: PropTypes.oneOfType(
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node
-    ])
+    )
 };
 
 export default Section;
