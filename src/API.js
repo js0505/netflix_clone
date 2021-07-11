@@ -21,7 +21,8 @@ export const movieAPI = {
     topRated: () => getResponse('/movie/top_rated'),
     upComing: () => getResponse('/movie/upcoming'),
     movieDetail: (id) => getResponse(`/movie/${id}`),
-    movieDetailSimilar: (id) => getResponse(`/movie/${id}/similar`)
+    movieDetailSimilar: (id) => getResponse(`/movie/${id}/similar`),
+    searchMovie: (query) => getResponse(`/search/movie`, {query})
 }
 
 export const tvAPI = {
@@ -29,6 +30,7 @@ export const tvAPI = {
     onTheAir: () => getResponse('/tv/on_the_air'),
     topRated: () => getResponse('/tv/top_rated'),
     tvDetail: (id) => getResponse(`/tv/${id}`),
-    tvDetailSimilar: (id) => getResponse(`/tv/${id}/similar`)
+    tvDetailSimilar: (id) => getResponse(`/tv/${id}/similar`),
+    searchTv: (query) => getResponse(`/search/tv`, {query})
 }
 
