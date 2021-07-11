@@ -11,7 +11,9 @@ const DetailContainer = () => {
     
     const [data, setData] = useState({
         result: {},
+        similar: [],
         resultErr: null,
+        similarErr: null,
         loading: true
     });
 
@@ -21,9 +23,16 @@ const DetailContainer = () => {
             ? await movieAPI.movieDetail(id)
             : await tvAPI.tvDetail(id)
         
+        const [similar, similarErr] = location.pathname.includes('/movie/')
+            ? await movieAPI.movieDetail(id)
+            : await tvAPI.tvDetailSimilar(id)
+        
+
         setData({
             result,
+            similar,
             resultErr,
+            similarErr,
             loading: false
         })
     },[id, location])

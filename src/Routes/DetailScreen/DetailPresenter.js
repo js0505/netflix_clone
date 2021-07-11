@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from '../../Components/Loader'
 import styled from 'styled-components';
-import Moment from 'react-moment';
+
 
 const Container = styled.div`
     height: calc(100vh - 50px);
@@ -71,7 +71,7 @@ const Overview = styled.p`
     width: 50%;
 `;
 
-const DetailPresenter = ({loading, result, error}) => {
+const DetailPresenter = ({loading, result, similar ,error}) => {
     return (
         loading
             ? <Loader />
@@ -96,6 +96,10 @@ const DetailPresenter = ({loading, result, error}) => {
                                 </Item>
                             </ItemContainer>
                             <Overview>{result.overview}</Overview>
+                            <span>Similar Program</span>
+                            <div>{similar.map(item => 
+                                <h1>{item.name || item.title}</h1>
+                            )}</div>
                         </Data>
                     </Content>
                 </Container>
