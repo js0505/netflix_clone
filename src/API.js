@@ -1,6 +1,6 @@
 import axios from 'axios';
+import { TMDB_KEY } from './config';
 
-const TMDB_KEY = '3b657ad90355e4ff973a1a4745dac62a';
 
 const makeRequest = async (path, params) => {
     return (

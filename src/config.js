@@ -1,0 +1,1 @@
+export const TMDB_KEY = `3b657ad90355e4ff973a1a4745dac62a`;

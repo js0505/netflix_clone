@@ -52,6 +52,7 @@ const SearchPresenter = ({movies, tvs, keyword, onChange, onSubmit, loading, err
                                         title={movie.title}
                                         rating={movie.vote_average}
                                         release={movie.release_date}
+                                        isMovie={true}
                                     />
                                 ))}
                             </Section>
