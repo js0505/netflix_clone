@@ -14,10 +14,14 @@ const SearchContainer = () => {
         tvsErr: null,
     })
 
+    //input태그로 입력되는 값을 keyword로 입력.
     const onChange = (e) => setKeyword(e.target.value)
 
     const getData = async (e) => {
+        //onSubmit의 고유 이벤트 동작인 페이지 리프레쉬를 방지한다.
         e.preventDefault()
+
+        //로딩 중
         setLoading(true)
         const [movies, moviesErr] = await movieAPI.searchMovie(keyword)
         const [tvs, tvsErr] = await tvAPI.searchTv(keyword)
@@ -28,6 +32,7 @@ const SearchContainer = () => {
             moviesErr,
             tvsErr
         })
+        //로딩 완료
         setLoading(false)
     }
 

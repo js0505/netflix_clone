@@ -77,7 +77,7 @@ const Overview = styled.p`
     font-size: 15px;
     opacity: 0.7;
     line-height: 1.5;
-    width: 50%;
+    width: 80%;
     margin-bottom: 150px;
 `;
 
@@ -102,12 +102,14 @@ const DetailPresenter = ({loading, result, similar ,error}) => {
                             <Title>{result.title || result.name}</Title>
                             <ItemContainer>
                                 <span>출시일 : </span>
-                                <Item format={'YY.MM.DD'}>
+                                <Item format={'YYYY / MM / DD'}>
                                     {result.release_date || result.first_air_date}
                                 </Item>
                                 <Divider>•</Divider>
                                 <span>장르 : </span>
                                 <Genre>
+                                    {/* 인덱스는 0부터 시작. 장르값이 1개면 그대로 작성하고 
+                                        2개 이상이면 장르명 오른쪽에 / 으로 각각 나눠서 작성. */}
                                     {result.genres.map((genre, index) => (
                                         index === result.genres.length - 1
                                             ? genre.name
@@ -123,7 +125,7 @@ const DetailPresenter = ({loading, result, similar ,error}) => {
                             </Overview>
                             <div>
                                 {similar.length === 0
-                                    ? (<h1>데이터가 없음</h1>)
+                                    ? '비슷한 프로그램이 없습니다.'
                                     : (
                                     <>
                                         <Section title={'Similar Programs'}>
