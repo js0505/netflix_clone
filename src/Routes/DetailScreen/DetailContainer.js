@@ -24,10 +24,9 @@ const DetailContainer = () => {
             : await tvAPI.tvDetail(id)
         
         const [similar, similarErr] = location.pathname.includes('/movie/')
-            ? await movieAPI.movieDetail(id)
+            ? await movieAPI.movieDetailSimilar(id)
             : await tvAPI.tvDetailSimilar(id)
-        
-
+        console.log(similar)
         setData({
             result,
             similar,

@@ -4,6 +4,10 @@ import Loader from '../../Components/Loader'
 import styled from 'styled-components';
 import Moment from 'react-moment';
 import { Helmet } from 'react-helmet';
+import Section from '../../Components/Section';
+import SimilarPoster from '../../Components/SimilarPoster';
+
+
 
 const Container = styled.div`
     height: calc(100vh - 50px);
@@ -74,7 +78,9 @@ const Overview = styled.p`
     opacity: 0.7;
     line-height: 1.5;
     width: 50%;
+    margin-bottom: 150px;
 `;
+
 
 const DetailPresenter = ({loading, result, similar ,error}) => {
     return (
@@ -109,11 +115,45 @@ const DetailPresenter = ({loading, result, similar ,error}) => {
                                     ))}
                                 </Genre>
                             </ItemContainer>
-                            <Overview>{result.overview}</Overview>
-                            {/* <span>Similar Program</span>
-                            <div>{similar.map(item => 
-                                <h1>{item.name || item.title}</h1>
-                            )}</div> */}
+                                    <Overview>
+                                        {result.overview === ''
+                                            ? '등록된 Overview가 없습니다.'
+                                            :  result.overview
+                                        }
+                                    </Overview>
+                                    <div>
+                                        {/* {similar.results.length < 0
+                                            ?   <h1>데이터가 없습니다.</h1> 
+                                            : (
+                                                <Section title={'Similar Program'}>
+                                        {similar.map(item => (
+                                        
+                                    )
+                                    )}
+                                </Section>
+                                            )
+                                            } */}
+                                        
+                                        {similar.length === 0
+                                            ? (<h1>데이터가 없음</h1>)
+                                            : (
+                                            <>
+                                                <Section title={'Similar Programs'}>
+                                                    {similar.map(item => (
+                                                        <SimilarPoster
+                                                            key={item.id}
+                                                            id={item.id}
+                                                            poster={item.poster_path}
+                                                            title={item.name || item.title}
+                                                            rating={item.vote_average}
+                                                            release={item.first_air_date}
+                                                        />
+                                                    ))}
+                                                </Section>
+                                            </>
+                                            )
+                                        }
+                            </div>
                         </Data>
                     </Content>
                 </Container>
