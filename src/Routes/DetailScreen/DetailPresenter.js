@@ -115,44 +115,32 @@ const DetailPresenter = ({loading, result, similar ,error}) => {
                                     ))}
                                 </Genre>
                             </ItemContainer>
-                                    <Overview>
-                                        {result.overview === ''
-                                            ? '등록된 Overview가 없습니다.'
-                                            :  result.overview
-                                        }
-                                    </Overview>
-                                    <div>
-                                        {/* {similar.results.length < 0
-                                            ?   <h1>데이터가 없습니다.</h1> 
-                                            : (
-                                                <Section title={'Similar Program'}>
-                                        {similar.map(item => (
-                                        
+                            <Overview>
+                                {result.overview === ''
+                                    ? '등록된 Overview가 없습니다.'
+                                    :  result.overview
+                                }
+                            </Overview>
+                            <div>
+                                {similar.length === 0
+                                    ? (<h1>데이터가 없음</h1>)
+                                    : (
+                                    <>
+                                        <Section title={'Similar Programs'}>
+                                            {similar.map(item => (
+                                                <SimilarPoster
+                                                    key={item.id}
+                                                    id={item.id}
+                                                    poster={item.poster_path}
+                                                    title={item.name || item.title}
+                                                    rating={item.vote_average}
+                                                    release={item.first_air_date}
+                                                />
+                                            ))}
+                                        </Section>
+                                    </>
                                     )
-                                    )}
-                                </Section>
-                                            )
-                                            } */}
-                                        
-                                        {similar.length === 0
-                                            ? (<h1>데이터가 없음</h1>)
-                                            : (
-                                            <>
-                                                <Section title={'Similar Programs'}>
-                                                    {similar.map(item => (
-                                                        <SimilarPoster
-                                                            key={item.id}
-                                                            id={item.id}
-                                                            poster={item.poster_path}
-                                                            title={item.name || item.title}
-                                                            rating={item.vote_average}
-                                                            release={item.first_air_date}
-                                                        />
-                                                    ))}
-                                                </Section>
-                                            </>
-                                            )
-                                        }
+                                }
                             </div>
                         </Data>
                     </Content>
@@ -160,8 +148,6 @@ const DetailPresenter = ({loading, result, similar ,error}) => {
             )
             }
         </>
-        
-        
     );
 };
 

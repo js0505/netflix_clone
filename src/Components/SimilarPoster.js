@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import EmptyPoster from '../assets/empty-image.png'
 
@@ -45,7 +44,7 @@ const Title = styled.span`
     margin-bottom: 3px;
 `;
 
-const SimilarPoster = ({id, poster, rating, title, release, isMovie = false}) => {
+const SimilarPoster = ({id, poster, title, isMovie = false}) => {
     return (
         <Link to={isMovie ? `/movie/${id}` : `/tv/${id}`}>
             <Container>
@@ -64,9 +63,7 @@ const SimilarPoster = ({id, poster, rating, title, release, isMovie = false}) =>
 SimilarPoster.propTypes = {
     id: PropTypes.number.isRequired,
     poster: PropTypes.string,
-    rating: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    release: PropTypes.string,
     isMovie: PropTypes.bool
 };
 
