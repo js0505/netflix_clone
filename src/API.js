@@ -29,3 +29,4 @@ export const tvAPI = {
     topRated: () => getResponse('/tv/top_rated'),
     tvDetail: (id) => getResponse(`/tv/${id}`)
 }
+
