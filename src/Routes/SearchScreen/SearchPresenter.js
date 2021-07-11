@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
+
 import Loader from '../../Components/Loader';
 import Section from '../../Components/Section';
 import Poster from '../../Components/Poster';
@@ -25,6 +27,9 @@ const Input = styled.input`
 const SearchPresenter = ({movies, tvs, keyword, onChange, onSubmit, loading, err}) => {
     return (
         <Container>
+            <Helmet>
+                <title>Search | Netflix Clone</title>
+            </Helmet>
             <Form onSubmit={onSubmit}>
                 <Input
                     placeholder={"Movie and TV Search"}
@@ -32,7 +37,8 @@ const SearchPresenter = ({movies, tvs, keyword, onChange, onSubmit, loading, err
                     onChange={onChange}
                 />
             </Form>
-            {loading
+            {
+                loading
                 ? <Loader />
                 : (
                     <>
@@ -50,7 +56,7 @@ const SearchPresenter = ({movies, tvs, keyword, onChange, onSubmit, loading, err
                                 ))}
                             </Section>
                         )}
-                        
+
                         {tvs && tvs.length > 0 && (
                             <Section title={'TV Results'}>
                                 {tvs.map(tv => (

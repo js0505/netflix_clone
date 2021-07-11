@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 import Loader from '../../Components/Loader'
 import Section from '../../Components/Section';
@@ -12,7 +13,12 @@ const Container = styled.div`
 
 const TVPresenter = ({airingToday, onTheAir, topRated, loading}) => {
     return (
-        loading
+        <>
+            <Helmet>
+                <title>TVs | Netflix Clone</title>
+            </Helmet>
+            {
+                loading
             ? (
                 <Loader />
             ) : (
@@ -57,6 +63,9 @@ const TVPresenter = ({airingToday, onTheAir, topRated, loading}) => {
                     </Section>
                 </Container>
             )
+            }
+        </>
+        
     );
 };
 

@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from '../../Components/Loader'
 import styled from 'styled-components';
-
+import Moment from 'react-moment';
+import { Helmet } from 'react-helmet';
 
 const Container = styled.div`
     height: calc(100vh - 50px);
@@ -56,7 +57,11 @@ const ItemContainer = styled.div`
     margin: 20px 0;
 `;
 
-const Item = styled.span`
+const Item = styled(Moment)`
+    font-size: 16px;
+`;
+
+const Genre = styled.span`
     font-size: 16px;
 `;
 
@@ -73,7 +78,14 @@ const Overview = styled.p`
 
 const DetailPresenter = ({loading, result, similar ,error}) => {
     return (
-        loading
+        <>
+            <Helmet>
+                <title>
+                    {result.title || result.name}
+                </title>
+            </Helmet>
+            {
+                loading
             ? <Loader />
             : (
                 <Container>
@@ -83,17 +95,19 @@ const DetailPresenter = ({loading, result, similar ,error}) => {
                         <Data>
                             <Title>{result.title || result.name}</Title>
                             <ItemContainer>
-                                <Item>
+                                <span>출시일 : </span>
+                                <Item format={'YY.MM.DD'}>
                                     {result.release_date || result.first_air_date}
                                 </Item>
                                 <Divider>•</Divider>
-                                <Item>
+                                <span>장르 : </span>
+                                <Genre>
                                     {result.genres.map((genre, index) => (
                                         index === result.genres.length - 1
                                             ? genre.name
                                             : `${genre.name} / `
                                     ))}
-                                </Item>
+                                </Genre>
                             </ItemContainer>
                             <Overview>{result.overview}</Overview>
                             {/* <span>Similar Program</span>
@@ -104,6 +118,9 @@ const DetailPresenter = ({loading, result, similar ,error}) => {
                     </Content>
                 </Container>
             )
+            }
+        </>
+        
         
     );
 };
