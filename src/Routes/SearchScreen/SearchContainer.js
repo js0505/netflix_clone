@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React,{useState} from 'react';
 import { movieAPI, tvAPI } from '../../API';
 import SearchPresenter from './SearchPresenter';
 
@@ -18,6 +18,7 @@ const SearchContainer = () => {
 
     const getData = async (e) => {
         e.preventDefault()
+        setLoading(true)
         const [movies, moviesErr] = await movieAPI.searchMovie(keyword)
         const [tvs, tvsErr] = await tvAPI.searchTv(keyword)
 
@@ -27,7 +28,7 @@ const SearchContainer = () => {
             moviesErr,
             tvsErr
         })
-
+        setLoading(false)
     }
 
 
