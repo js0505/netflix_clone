@@ -96,10 +96,10 @@ const DetailPresenter = ({loading, result, similar ,error}) => {
                                 </Item>
                             </ItemContainer>
                             <Overview>{result.overview}</Overview>
-                            <span>Similar Program</span>
+                            {/* <span>Similar Program</span>
                             <div>{similar.map(item => 
                                 <h1>{item.name || item.title}</h1>
-                            )}</div>
+                            )}</div> */}
                         </Data>
                     </Content>
                 </Container>

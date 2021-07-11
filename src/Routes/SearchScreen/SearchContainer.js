@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import { movieAPI, tvAPI } from '../../API';
+import SearchPresenter from './SearchPresenter';
 
 const SearchContainer = () => {
 
@@ -33,9 +34,7 @@ const SearchContainer = () => {
 
 
     return (
-        <div>
-            
-        </div>
+        <SearchPresenter />
     );
 };
 

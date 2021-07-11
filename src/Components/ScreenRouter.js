@@ -5,6 +5,7 @@ import Header from './Header';
 import Home from '../Routes/HomeScreen'
 import TV from '../Routes/TVScreen'
 import Detail from '../Routes/DetailScreen'
+import Search from '../Routes/SearchScreen'
 
 
 const ScreenRouter = () => {
@@ -14,7 +15,7 @@ const ScreenRouter = () => {
             <Switch>
                 <Route path='/' exact component={Home} />
                 <Route path='/tv' exact component={TV} />
-                <Route path='/search' exact component={Home} />
+                <Route path='/search' exact component={Search} />
                 <Route path='/movie/:id' exact component={Detail} />
                 <Route path='/tv/:id' exact component={Detail} />
             </Switch>
