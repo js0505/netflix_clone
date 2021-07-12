@@ -4,7 +4,7 @@ import Loader from '../../Components/Loader'
 import styled from 'styled-components';
 import Moment from 'react-moment';
 import { Helmet } from 'react-helmet';
-import Section from '../../Components/Section';
+import SimilarSection from '../../Components/SimilarSection';
 import SimilarPoster from '../../Components/SimilarPoster';
 
 
@@ -62,11 +62,11 @@ const ItemContainer = styled.div`
 `;
 
 const Item = styled(Moment)`
-    font-size: 16px;
+    font-size: 14px;
 `;
 
 const Genre = styled.span`
-    font-size: 16px;
+    font-size: 14px;
 `;
 
 const Divider = styled.span`
@@ -78,11 +78,11 @@ const Overview = styled.p`
     opacity: 0.7;
     line-height: 1.5;
     width: 80%;
-    margin-bottom: 150px;
+    margin-bottom: 80px;
 `;
 
 
-const DetailPresenter = ({loading, result, similar ,error}) => {
+const DetailPresenter = ({ loading, result, similar, error, location }) => {
     return (
         <>
             <Helmet>
@@ -101,12 +101,12 @@ const DetailPresenter = ({loading, result, similar ,error}) => {
                         <Data>
                             <Title>{result.title || result.name}</Title>
                             <ItemContainer>
-                                <span>출시일 : </span>
+                                <span>Release : </span>
                                 <Item format={'YYYY / MM / DD'}>
                                     {result.release_date || result.first_air_date}
                                 </Item>
                                 <Divider>•</Divider>
-                                <span>장르 : </span>
+                                <span>Genre : </span>
                                 <Genre>
                                     {/* 인덱스는 0부터 시작. 장르값이 1개면 그대로 작성하고 
                                         2개 이상이면 장르명 오른쪽에 / 으로 각각 나눠서 작성. */}
@@ -128,7 +128,7 @@ const DetailPresenter = ({loading, result, similar ,error}) => {
                                     ? '비슷한 프로그램이 없습니다.'
                                     : (
                                     <>
-                                        <Section title={'Similar Programs'}>
+                                        <SimilarSection title={'Similar Programs'}>
                                             {similar.map(item => (
                                                 <SimilarPoster
                                                     key={item.id}
@@ -137,9 +137,11 @@ const DetailPresenter = ({loading, result, similar ,error}) => {
                                                     title={item.name || item.title}
                                                     rating={item.vote_average}
                                                     release={item.first_air_date}
+                                                    //주소값을 검사해서 similarposter의 Link값 설정.
+                                                    isMovie={location.pathname.includes('/movie/')}
                                                 />
                                             ))}
-                                        </Section>
+                                        </SimilarSection>
                                     </>
                                     )
                                 }

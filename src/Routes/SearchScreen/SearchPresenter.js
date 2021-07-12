@@ -8,11 +8,13 @@ import Section from '../../Components/Section';
 import Poster from '../../Components/Poster';
 
 
+
 const Container = styled.div`
     padding: 0 20px;
 `;
 
 const Form = styled.form`
+    text-align: center;
     margin-bottom: 50px;
     width: 100%;
 `;
@@ -23,7 +25,6 @@ const Input = styled.input`
     width: 100%;
 `;
 
-
 const SearchPresenter = ({movies, tvs, keyword, onChange, onSubmit, loading, err}) => {
     return (
         <Container>
@@ -32,7 +33,7 @@ const SearchPresenter = ({movies, tvs, keyword, onChange, onSubmit, loading, err
             </Helmet>
             <Form onSubmit={onSubmit}>
                 <Input
-                    placeholder={"Movie and TV Search"}
+                    placeholder={"Search Movie and TV Show"}
                     value={keyword}
                     onChange={onChange}
                 />

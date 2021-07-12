@@ -9,20 +9,14 @@ const Container = styled.div`
 `;
 
 const Image = styled.div`
+    /* width: 125px; */
     height: 180px;
     border-radius: 3px;
     background-position: center;
     background-image: url(${(props) => props.bgurl});
     background-size: cover;
     transition: opacity 0.1s linear;
-`;
-
-const Rating = styled.span`
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    opacity: 0;
-    transition: opacity 0.1s linear;
+    opacity: 0.8;
 `;
 
 const ImageContainer = styled.div`
@@ -30,11 +24,8 @@ const ImageContainer = styled.div`
     margin-bottom: 7px;
     //& 과 :hover 를 띄어쓰기 하면 동작하지 않는다.
     &:hover {
-        ${Rating} {
-            opacity: 1;
-        }
         ${Image} {
-            opacity: 0.3;
+            opacity: 1;
         }
     }
 `;

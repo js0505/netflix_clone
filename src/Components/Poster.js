@@ -61,7 +61,7 @@ const Poster = ({id, poster, rating, title, release, isMovie = false}) => {
                 <Rating>⭐️{rating}/10</Rating>
             </ImageContainer>
             <Title>{title.length > 18 ? `${title.substring(0, 18)}...` : title}</Title>
-            <Release format={'YY / MM / DD'}>{release}</Release>
+            <Release format={'YYYY.MM.DD'}>{release}</Release>
             </Container>
         </Link>
         
