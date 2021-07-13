@@ -5,6 +5,9 @@ import styled from 'styled-components';
 const Container = styled.div`
     margin-left: 30px;
     margin-bottom: 40px;
+    ${({ theme }) => theme.mobile`
+        margin-left: 0;
+    `};
 `;
 
 const Title = styled.div`

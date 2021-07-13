@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from '../../Components/Loader'
-import styled from 'styled-components';
+
+import styled, { ThemeProvider } from 'styled-components';
+import media from '../../Css/Media';
+import theme from '../../Css/Theme'
+
 import Moment from 'react-moment';
 import { Helmet } from 'react-helmet';
 import SimilarSection from '../../Components/SimilarSection';
@@ -17,6 +21,9 @@ const Container = styled.div`
     width: 100%;
     position: relative;
     padding: 50px;
+    ${({ theme }) => theme.mobile`
+        height: 100%;
+    `};
 `;
 
 const BackDrop = styled.div`
@@ -39,29 +46,52 @@ const Content = styled.div`
     position: relative;
     z-index: 1;
     height: 100%;
+    ${({ theme }) => theme.mobile`
+        flex-direction: column;
+        justify-content: space-between;
+    `};
 `;
 
 const Cover = styled.div`
     width: 30%;
+    height: 100%;
     background-position: center;
     background-size: cover;
-    height: 100%;
     border-radius: 10px;
     margin-left: 30px;
     background-image: url(${(props) => props.bgImg});
+    ${({ theme }) => theme.mobile`
+        width: 100%;
+        margin-left: 0;
+        height: 180px;
+    `};
 `;
 
 const Data = styled.div`
     width: 70%;
     margin-left: 50px;
+    ${({ theme }) => theme.mobile`
+        margin-left: 0;
+        width: 100%;
+    `};
 `;
 
 const Title = styled.h3`
     font-size: 32px;
+    ${({ theme }) => theme.mobile`
+        margin-top: 10px;
+        font-size: 20px;
+        width: 100%;
+    `};
 `;
 
 const ItemContainer = styled.div`
     margin: 20px 0;
+`;
+const Release = styled.span`
+    ${({ theme }) => theme.mobile`
+        display: block;
+    `};
 `;
 
 const Item = styled(Moment)`
@@ -74,6 +104,9 @@ const Genre = styled.span`
 
 const Divider = styled.span`
     margin: 0 10px;
+    ${({ theme }) => theme.mobile`
+        display: none;
+    `};
 `;
 
 const Overview = styled.p`
@@ -82,6 +115,11 @@ const Overview = styled.p`
     line-height: 1.5;
     width: 80%;
     margin-bottom: 80px;
+    ${({ theme }) => theme.mobile`
+        font-size: 10px;
+        width: 100%;
+        margin-bottom: 30px;
+    `};
 `;
 
 const VideoSimilarContainer = styled.div`
@@ -102,6 +140,7 @@ const DetailPresenter = ({ loading, result, similar, error, location, videos }) 
                 loading
             ? <Loader />
             : (
+                <ThemeProvider theme={{ ...theme, ...media}}>
                 <Container>
                     <BackDrop bgImg={`https://image.tmdb.org/t/p/w500${result.backdrop_path}`}/>
                     <Content>
@@ -109,10 +148,13 @@ const DetailPresenter = ({ loading, result, similar, error, location, videos }) 
                         <Data>
                             <Title>{result.title || result.name}</Title>
                             <ItemContainer>
-                                <span>Release : </span>
-                                <Item format={'YYYY / MM / DD'}>
-                                    {result.release_date || result.first_air_date}
-                                </Item>
+                                <Release>
+                                    <span>Release : </span>
+                                    <Item format={'YYYY / MM / DD'}> 
+                                        {result.release_date || result.first_air_date}
+                                    </Item>
+                                </Release>
+                                
                                 <Divider>•</Divider>
                                 <span>Genre : </span>
                                 <Genre>
@@ -170,6 +212,7 @@ const DetailPresenter = ({ loading, result, similar, error, location, videos }) 
                         </Data>
                     </Content>
                 </Container>
+                </ThemeProvider>
             )
             }
         </>

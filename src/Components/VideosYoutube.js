@@ -9,6 +9,9 @@ const Container = styled.div`
 
 const SYoutube = styled(YouTube)`
     margin-right: 25px;
+    ${({ theme }) => theme.mobile`
+        margin-right: 10px;
+    `};
 `;
 
 
