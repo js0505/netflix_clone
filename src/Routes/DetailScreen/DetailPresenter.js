@@ -7,6 +7,9 @@ import { Helmet } from 'react-helmet';
 import SimilarSection from '../../Components/SimilarSection';
 import SimilarPoster from '../../Components/SimilarPoster';
 
+import VideosSection from '../../Components/VideosSection';
+import VideosYoutube from '../../Components/VideosYoutube';
+
 
 
 const Container = styled.div`
@@ -81,8 +84,13 @@ const Overview = styled.p`
     margin-bottom: 80px;
 `;
 
+const VideoSimilarContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
-const DetailPresenter = ({ loading, result, similar, error, location }) => {
+const DetailPresenter = ({ loading, result, similar, error, location, videos }) => {
+    
     return (
         <>
             <Helmet>
@@ -119,33 +127,46 @@ const DetailPresenter = ({ loading, result, similar, error, location }) => {
                             </ItemContainer>
                             <Overview>
                                 {result.overview === ''
-                                    ? '등록된 Overview가 없습니다.'
+                                    ? 'No Overview'
                                     :  result.overview
                                 }
-                            </Overview>
-                            <div>
-                                {similar.length === 0
-                                    ? '비슷한 프로그램이 없습니다.'
-                                    : (
-                                    <>
-                                        <SimilarSection title={'Similar Programs'}>
-                                            {similar.map(item => (
-                                                <SimilarPoster
-                                                    key={item.id}
-                                                    id={item.id}
-                                                    poster={item.poster_path}
-                                                    title={item.name || item.title}
-                                                    rating={item.vote_average}
-                                                    release={item.first_air_date}
-                                                    //주소값을 검사해서 similarposter의 Link값 설정.
-                                                    isMovie={location.pathname.includes('/movie/')}
-                                                />
-                                            ))}
-                                        </SimilarSection>
-                                    </>
-                                    )
-                                }
-                            </div>
+                                    </Overview>
+                            <VideoSimilarContainer>
+                                    {videos.length === 0
+                                            ? (<VideosSection title={'No Trailer'}/>)
+                                        : (
+                                            <>
+                                                <VideosSection title={'Trailer'}>
+                                                    {videos.map(item => (
+                                                        <VideosYoutube id={item.key}/>
+                                                    ))}    
+                                                </VideosSection>
+                                            </>
+                                        )
+                                    }
+
+                                    {similar.length === 0
+                                        ? ( <SimilarSection title={'No Similar Programs'} />)
+                                        : (
+                                        <>
+                                            <SimilarSection title={'Similar Programs'}>
+                                                {similar.map(item => (
+                                                    <SimilarPoster
+                                                        key={item.id}
+                                                        id={item.id}
+                                                        poster={item.poster_path}
+                                                        title={item.name || item.title}
+                                                        rating={item.vote_average}
+                                                        release={item.first_air_date}
+                                                        //주소값을 검사해서 similarposter의 Link값 설정.
+                                                        isMovie={location.pathname.includes('/movie/')}
+                                                    />
+                                                ))}
+                                            </SimilarSection>
+                                        </>
+                                        )
+                                    }
+                            </VideoSimilarContainer>
                         </Data>
                     </Content>
                 </Container>

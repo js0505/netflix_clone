@@ -14,6 +14,7 @@ const ScreenRouter = () => {
             <Header />
             <Switch>
                 <Route path='/' exact component={Home} />
+                <Route path='/movie' exact component={Home} />
                 <Route path='/tv' exact component={TV} />
                 <Route path='/search' exact component={Search} />
                 <Route path='/movie/:id' exact component={Detail} />

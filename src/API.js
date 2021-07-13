@@ -22,6 +22,7 @@ export const movieAPI = {
     upComing: () => getResponse('/movie/upcoming'),
     movieDetail: (id) => getResponse(`/movie/${id}`),
     movieDetailSimilar: (id) => getResponse(`/movie/${id}/similar`),
+    movieDetailVideos: (id) => getResponse(`/movie/${id}/videos`),
     searchMovie: (query) => getResponse(`/search/movie`, {query})
 }
 
@@ -31,6 +32,7 @@ export const tvAPI = {
     topRated: () => getResponse('/tv/top_rated'),
     tvDetail: (id) => getResponse(`/tv/${id}`),
     tvDetailSimilar: (id) => getResponse(`/tv/${id}/similar`),
+    tvDetailVideos: (id) => getResponse(`/tv/${id}/videos`),
     searchTv: (query) => getResponse(`/search/tv`, {query})
 }
 

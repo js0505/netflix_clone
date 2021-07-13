@@ -14,8 +14,10 @@ const DetailContainer = () => {
     const [data, setData] = useState({
         result: {},
         similar: [],
+        videos: [],
         resultErr: null,
         similarErr: null,
+        videosErr: null,
         loading: true,
         location: {}
     });
@@ -30,14 +32,21 @@ const DetailContainer = () => {
             ? await movieAPI.movieDetailSimilar(id)
             : await tvAPI.tvDetailSimilar(id)
         
+        const [videos, videosErr] = location.pathname.includes('/movie/')
+            ? await movieAPI.movieDetailVideos(id)
+            : await tvAPI.tvDetailVideos(id)
+        
+
         // 비슷한 프로그램 데이터 개수 제한.
-        similar.splice(5)
+        similar.splice(10)
 
         setData({
             result,
             similar,
+            videos,
             resultErr,
             similarErr,
+            videosErr,
             loading: false,
             location
         })

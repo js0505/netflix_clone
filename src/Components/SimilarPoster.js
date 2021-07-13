@@ -9,7 +9,8 @@ const Container = styled.div`
 `;
 
 const Image = styled.div`
-    /* width: 125px; */
+    width: 125px;
+    margin-right: 25px;
     height: 180px;
     border-radius: 3px;
     background-position: center;

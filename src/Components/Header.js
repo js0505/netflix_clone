@@ -41,18 +41,19 @@ const SLink = styled(Link)`
 
 const Header = () => {
 
-    const {pathname} = useLocation();
+    const { pathname } = useLocation();
+
     
     return (
         <Container>
             <Menu>
-                <Item current={pathname === '/'}>
-                    <SLink to='/'>Movies</SLink>
+                <Item current={pathname.includes('/movie')}>
+                    <SLink to='/movie'>Movies</SLink>
                 </Item>
-                <Item current={pathname === '/tv'}>
+                <Item current={pathname.includes('/tv')}>
                     <SLink to='/tv'>TV</SLink>
                 </Item>
-                <Item current={pathname === '/search'}>
+                <Item current={pathname.includes('/search')}>
                     <SLink to='/search'>Search</SLink>
                 </Item>
             </Menu>
