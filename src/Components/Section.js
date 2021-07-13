@@ -5,6 +5,9 @@ import styled from 'styled-components';
 const Container = styled.div`
     margin-left: 30px;
     margin-bottom: 40px;
+    ${({ theme }) => theme.mobile`
+        margin-left: 20px;
+    `};
 `;
 
 const Title = styled.div`
@@ -17,6 +20,11 @@ const Grid = styled.div`
     display: grid;
     grid-gap : 25px;
     grid-template-columns: repeat(auto-fill, 125px);
+    ${({ theme }) => theme.mobile`
+        display: flex;
+        overflow: scroll;
+        justify-content: space-between;
+    `};
 `;
 
 

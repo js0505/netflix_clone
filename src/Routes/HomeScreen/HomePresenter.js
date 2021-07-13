@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
+
+import styled, { ThemeProvider } from 'styled-components';
+import media from '../../Css/Media';
+import theme from '../../Css/Theme'
+
 
 import Loader from '../../Components/Loader'
 import Section from '../../Components/Section';
 import Poster from '../../Components/Poster';
 
 const Container = styled.div`
-
+    padding-top: 100px;
 `;
 
 const HomePresenter = ({ nowPlaying, topRated, upComing, loading }) => {
@@ -22,6 +26,7 @@ const HomePresenter = ({ nowPlaying, topRated, upComing, loading }) => {
             ? (
                 <Loader />
             ) : (
+                <ThemeProvider theme={{ ...theme, ...media}}>
                 <Container>
                     <Section title={'Now Playing'}>
                         {nowPlaying.map(item => (
@@ -65,6 +70,7 @@ const HomePresenter = ({ nowPlaying, topRated, upComing, loading }) => {
                         ))}
                     </Section>
                 </Container>
+                </ThemeProvider>
             )
             }
         </>

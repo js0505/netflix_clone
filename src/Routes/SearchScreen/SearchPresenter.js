@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
+
+import styled, { ThemeProvider } from 'styled-components';
+import media from '../../Css/Media';
+import theme from '../../Css/Theme'
 
 import Loader from '../../Components/Loader';
 import Section from '../../Components/Section';
@@ -11,6 +14,10 @@ import Poster from '../../Components/Poster';
 
 const Container = styled.div`
     padding: 0 20px;
+    padding-top: 100px;
+    ${({ theme }) => theme.mobile`
+        padding: 100px 10px 0 10px;
+    `};
 `;
 
 const Form = styled.form`
@@ -27,6 +34,7 @@ const Input = styled.input`
 
 const SearchPresenter = ({movies, tvs, keyword, onChange, onSubmit, loading, err}) => {
     return (
+        <ThemeProvider theme={{ ...theme, ...media}}>
         <Container>
             <Helmet>
                 <title>Search | Netflix Clone</title>
@@ -77,6 +85,7 @@ const SearchPresenter = ({movies, tvs, keyword, onChange, onSubmit, loading, err
                 )
             }
         </Container>
+        </ThemeProvider>
     );
 };
 

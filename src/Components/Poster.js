@@ -16,6 +16,9 @@ const Image = styled.div`
     background-image: url(${(props) => props.bgurl});
     background-size: cover;
     transition: opacity 0.1s linear;
+    ${({ theme }) => theme.mobile`
+        width: 125px;
+    `};
 `;
 
 const Rating = styled.span`

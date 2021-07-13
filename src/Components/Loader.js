@@ -6,15 +6,16 @@ const Container = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
-    font-size: 32px;
+    font-size: 50px;
     margin-top: 50px;
+    padding-top: 200px;
 `;
 
 
 const Loader = () => {
     return (
         <Container>
-            <span role='img' aria-label='Loading'>😄</span>
+            <span role='img' aria-label='Loading'>😄 Loading 😄</span>
         </Container>
     );
 };

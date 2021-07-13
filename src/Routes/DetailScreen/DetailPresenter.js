@@ -20,9 +20,11 @@ const Container = styled.div`
     height: calc(100vh - 50px);
     width: 100%;
     position: relative;
-    padding: 50px;
+    padding: 100px 50px 0 50px;
     ${({ theme }) => theme.mobile`
         height: 100%;
+        padding: 0 25px;
+        padding-top: 70px;
     `};
 `;
 
@@ -61,9 +63,11 @@ const Cover = styled.div`
     margin-left: 30px;
     background-image: url(${(props) => props.bgImg});
     ${({ theme }) => theme.mobile`
-        width: 100%;
+        width: 125px;
         margin-left: 0;
+        margin: 0 auto;
         height: 180px;
+        background-size: 100%;
     `};
 `;
 
