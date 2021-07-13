@@ -34,7 +34,7 @@ const Container = styled.div`
 
 const BackDrop = styled.div`
     position: absolute;
-    top: 0;
+    top: 5%;
     left: 0;
     width: 100%;
     height: 100%;
@@ -181,9 +181,9 @@ const DetailPresenter = ({ loading, result, similar, error, location, videos }) 
                 loading
             ? <Loader />
             : (
-                <ThemeProvider theme={{ ...theme, ...media}}>
+                <ThemeProvider theme={{ ...theme, ...media }}>
+                    <BackDrop bgImg={`https://image.tmdb.org/t/p/w500${result.backdrop_path}`}/>
                     <Container>
-                        <BackDrop bgImg={`https://image.tmdb.org/t/p/w500${result.backdrop_path}`}/>
                         <Content>
                             <Cover bgImg={`https://image.tmdb.org/t/p/w500${result.poster_path}`}/>
                             <Data>
