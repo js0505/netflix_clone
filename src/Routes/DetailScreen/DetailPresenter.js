@@ -22,10 +22,11 @@ const Container = styled.div`
     position: relative;
     padding: 100px 50px 0 50px;
     ${({ theme }) => theme.tablet`
-
+        height: 100%;
+        display: flex;
+        flex-direction: column;
     `};
     ${({ theme }) => theme.mobile`
-        height: 100%;
         padding: 0 25px;
         padding-top: 70px;
     `};
@@ -52,7 +53,8 @@ const Content = styled.div`
     z-index: 1;
     height: 100%;
     ${({ theme }) => theme.tablet`
-    height: 40%;
+        height: 100%;
+        margin-bottom: 80px;
     `};
     ${({ theme }) => theme.mobile`
         flex-direction: column;
@@ -157,15 +159,12 @@ const VideoSimilarContainer = styled.div`
     z-index: 1;
     display: flex;
     flex-direction: column;
+
     ${({ theme }) => theme.tablet`
-        top: 53%;
-        left: 8%;
-        width: 80%;
-    `};
-    ${({ theme }) => theme.mobile`
-        position: relative;
+        position: absolute;
         width: 100%;
-        margin: -20px;
+        top: 90%;
+        left: 5%;
     `};
 `;
 
