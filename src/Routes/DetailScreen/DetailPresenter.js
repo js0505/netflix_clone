@@ -52,7 +52,7 @@ const Content = styled.div`
     z-index: 1;
     height: 100%;
     ${({ theme }) => theme.tablet`
-    height: 50%;
+    height: 40%;
     `};
     ${({ theme }) => theme.mobile`
         flex-direction: column;
@@ -158,7 +158,7 @@ const VideoSimilarContainer = styled.div`
     display: flex;
     flex-direction: column;
     ${({ theme }) => theme.tablet`
-        top: 65%;
+        top: 53%;
         left: 8%;
         width: 80%;
     `};
