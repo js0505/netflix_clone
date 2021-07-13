@@ -1,6 +1,6 @@
 # Netflix Clone - React
 
-바로가기 : https://amazing-goldwasser-5a21b9.netlify.app
+#react
 
 [The Movie Database (TMDb)](https://www.themoviedb.org/) 에서 제공되는 API를 이용하여
 영화, TV 프로그램의 인기 프로그램, 현재 상영작 등을 포스터를 활용해서 보여주는 페이지.
@@ -26,3 +26,24 @@
 - react-router-dom
 - react-youtube
 - styled-components, styled-reset
+
+## 반응형 웹 - Media Query 설정
+
+---
+
+styled-components 의 ThemeProvider 를 사용하여 모듈화 시켜
+각 컴포넌트에 미디어 쿼리 설정.
+
+Laptop : Macbook Air M1
+
+![다운로드](https://user-images.githubusercontent.com/71714983/125486066-094ab595-517e-424c-ada6-5775590f4824.png)
+![다운로드](https://user-images.githubusercontent.com/71714983/125486342-d105c554-81e8-452a-a13c-e0b5f870a710.png)
+
+Tablet : Ipad Air3
+
+![다운로드](https://user-images.githubusercontent.com/71714983/125486348-9a748237-9804-4df5-91d2-d42e876c8bbb.jpeg)
+
+Mobile : IPhone SE 2nd Generation
+
+![다운로드](https://user-images.githubusercontent.com/71714983/125486354-6b9ab25c-4cb9-45ea-a418-b027d0825130.jpeg)
+![다운로드](https://user-images.githubusercontent.com/71714983/125486361-0c6cffc4-9cef-4f17-ac56-b930e40914b7.jpeg)
