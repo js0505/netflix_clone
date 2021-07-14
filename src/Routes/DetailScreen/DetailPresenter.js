@@ -53,7 +53,6 @@ const Content = styled.div`
     z-index: 1;
     height: 100%;
     ${({ theme }) => theme.tablet`
-        height: 100%;
         margin-bottom: 80px;
     `};
     ${({ theme }) => theme.mobile`
@@ -91,9 +90,6 @@ const Cover = styled.div`
 const Data = styled.div`
     width: 70%;
     margin-left: 50px;
-    ${({ theme }) => theme.tablet`
-
-    `};
     ${({ theme }) => theme.mobile`
         margin-left: 0;
         width: 100%;
@@ -161,7 +157,6 @@ const VideoSimilarContainer = styled.div`
     flex-direction: column;
 
     ${({ theme }) => theme.tablet`
-        position: absolute;
         width: 100%;
         top: 90%;
         left: 5%;

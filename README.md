@@ -1,6 +1,6 @@
 # Netflix Clone - React
 
-#react
+바로가기 : https://amazing-goldwasser-5a21b9.netlify.app
 
 [The Movie Database (TMDb)](https://www.themoviedb.org/) 에서 제공되는 API를 이용하여
 영화, TV 프로그램의 인기 프로그램, 현재 상영작 등을 포스터를 활용해서 보여주는 페이지.
@@ -34,16 +34,22 @@
 styled-components 의 ThemeProvider 를 사용하여 모듈화 시켜
 각 컴포넌트에 미디어 쿼리 설정.
 
-Laptop : Macbook Air M1
+## Laptop
 
-![다운로드](https://user-images.githubusercontent.com/71714983/125486066-094ab595-517e-424c-ada6-5775590f4824.png)
-![다운로드](https://user-images.githubusercontent.com/71714983/125486342-d105c554-81e8-452a-a13c-e0b5f870a710.png)
+<br>
+<br>
+<img src = "https://user-images.githubusercontent.com/71714983/125486066-094ab595-517e-424c-ada6-5775590f4824.png" width="30%" height="30%">
+<img src = "https://user-images.githubusercontent.com/71714983/125486342-d105c554-81e8-452a-a13c-e0b5f870a710.png" width="30%" height="30%">
 
-Tablet : Ipad Air3
+## Tablet
 
-![다운로드](https://user-images.githubusercontent.com/71714983/125486348-9a748237-9804-4df5-91d2-d42e876c8bbb.jpeg)
+<br>
+<br>
+<img src = "https://user-images.githubusercontent.com/71714983/125486348-9a748237-9804-4df5-91d2-d42e876c8bbb.jpeg" width="30%" height="30%">
 
-Mobile : IPhone SE 2nd Generation
+## Mobile
 
-![다운로드](https://user-images.githubusercontent.com/71714983/125486354-6b9ab25c-4cb9-45ea-a418-b027d0825130.jpeg)
-![다운로드](https://user-images.githubusercontent.com/71714983/125486361-0c6cffc4-9cef-4f17-ac56-b930e40914b7.jpeg)
+<br>
+<br>
+<img src = "https://user-images.githubusercontent.com/71714983/125486354-6b9ab25c-4cb9-45ea-a418-b027d0825130.jpeg" width="30%" height="30%">
+<img src = "https://user-images.githubusercontent.com/71714983/125486361-0c6cffc4-9cef-4f17-ac56-b930e40914b7.jpeg" width="30%" height="30%">
